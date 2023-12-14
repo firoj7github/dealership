@@ -8,7 +8,7 @@
 
     <div class="col-md-11 pt-5 m-auto rounded">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header adding">
 
                 <h5>Dealer Banner</h5>
 
