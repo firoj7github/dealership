@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://localcarz.com/sitemap.xml
+
+
+Disallow:/login*
+Disallow:/buyer/login
+Disallow:/buyer/register
+Disallow:/used-cars-for-sale-autos
+Disallow:/recently-added
+Disallow:/favorite/listing
+
+
+
