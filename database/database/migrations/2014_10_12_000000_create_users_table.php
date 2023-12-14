@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -14,30 +14,37 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('email');
-            $table->string('subscriber_id')->nullable();
-            $table->string('user_name')->nullable()->unique();
-            $table->string('password');
-            $table->string('phone',25)->nullable();
-            $table->string('address')->nullable();
-            $table->tinyInteger('blood_group')->nullable();
-            $table->string('date_of_birth', 20)->nullable();
-            $table->string('last_blood_donate_date', 20)->nullable();
-            $table->tinyInteger('role');
-            $table->string('email_verification_code', 50)->nullable();
-            $table->tinyInteger('status')->default(0);
+            $table->id();
+            $table->string('company_name')->nullable();
+            $table->string('username')->nullable();
+            $table->string('fname')->nullable();
+            $table->string('lname')->nullable();
+            $table->string('email')->unique();
+            $table->string('adf_email')->nullable();
+            $table->string('phone')->nullable();
+            $table->tinyInteger('role')->default(0);
+            $table->tinyInteger('package')->nullable()->comment('St 0, Co 1, Si 2, Go 3, Pl 4, Pr 5, Ex 6, Bl 7');
+            $table->tinyInteger('status')->default(1)->comment('A 1, I 0');
+            $table->text('address')->nullable();
+            $table->text('img')->nullable();
+            $table->string('password_reset_otp')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->tinyInteger('is_verify_email')->default(0);
+            $table->string('password')->nullable();
+            $table->text('website')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->string('salesperson')->nullable();
+            $table->string('phone_type')->nullable();
+            $table->string('contact_type')->nullable();
             $table->rememberToken();
-            $table->softDeletes();
             $table->timestamps();
-        });
-
-        Schema::table('users', function (Blueprint $table) {
-            $table->unique(['email', 'subscriber_id']);
+            $table->softDeletes();
         });
     }
+
+
+
+
 
     /**
      * Reverse the migrations.
@@ -48,4 +55,4 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
-}
+};

@@ -1,0 +1,20 @@
+01. go to the link 
+	https://docs.laravel-excel.com/3.1/getting-started/installation.html
+02.run in composer 
+	composer require maatwebsite/excel
+
+03. goto config/app.php
+	'providers' => [
+	    	/*
+		 * Package Service Providers...
+ 		 */
+    		Maatwebsite\Excel\ExcelServiceProvider::class,
+		]
+04. goto comfig/app.php 
+	'aliases' => [
+			    ...
+ 			   'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+		      ]
+05. last go to composer and write
+
+	php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config 
